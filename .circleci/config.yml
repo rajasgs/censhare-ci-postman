@@ -1,0 +1,17 @@
+# Python CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-python/ for more details
+#
+version: 2.1
+orbs:
+  newman: postman/newman@0.0.2
+jobs:
+  #newman-collection-run:
+      
+  build:
+    executor: newman/postman-newman-docker
+    steps:
+      - checkout
+      - newman/newman-run:
+          collection: ./Censhare-CI.postman_collection.json
+          environment: ./cms-dev.postman_environment.json

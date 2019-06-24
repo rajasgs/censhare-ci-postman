@@ -1,0 +1,70 @@
+{
+	"info": {
+		"_postman_id": "fac76c04-bc3a-4c0d-b71e-26782c6a265e",
+		"name": "Censhare-CI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Assets",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dfb58db6-2c26-49aa-8963-6015c61f1acf",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"<assets>\");",
+							"});",
+							"",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://cms-dev.kwikee.com/ws/rest/service/assets/all;censhare:resource-key=kwone",
+					"protocol": "https",
+					"host": [
+						"cms-dev",
+						"kwikee",
+						"com"
+					],
+					"path": [
+						"ws",
+						"rest",
+						"service",
+						"assets",
+						"all;censhare:resource-key=kwone"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
