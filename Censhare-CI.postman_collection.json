@@ -23,7 +23,18 @@
 							"",
 							"pm.test(\"Content-Type is present\", function () {",
 							"    pm.response.to.have.header(\"Content-Type\");",
-							"});"
+							"});",
+							"",
+							"var jsonObject = xml2Json(responseBody);",
+							"console.log(jsonObject);",
+							"",
+							"pm.test(\"Check Asset 2\", function () {",
+							"    //console.log(jsonObject.assets.asset.$.application);",
+							"    //to.equal(\"production\")",
+							"    pm.expect(jsonObject.assets.asset.$.application).to.equal(\"default\");",
+							"});",
+							"",
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -61,6 +72,271 @@
 						"service",
 						"assets",
 						"all;censhare:resource-key=kwone"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get by Asset Id 3866324",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4388e273-dbba-4842-b35f-878fb1808d90",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"<asset\");",
+							"});",
+							"",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"var jsonObject = xml2Json(responseBody);",
+							"console.log(jsonObject);",
+							"",
+							"pm.test(\"Check Asset 2\", function () {",
+							"    //console.log(jsonObject.assets.asset.$.application);",
+							"    //to.equal(\"production\")",
+							"    pm.expect(jsonObject.asset.$.created_by).to.equal(\"764\");",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://cms-dev.kwikee.com/ws/rest/service/assets/asset/id/3866324",
+					"protocol": "https",
+					"host": [
+						"cms-dev",
+						"kwikee",
+						"com"
+					],
+					"path": [
+						"ws",
+						"rest",
+						"service",
+						"assets",
+						"asset",
+						"id",
+						"3866324"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Modules",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a881dee6-ec69-47b4-bfc7-bec5129e52ed",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"<asset\");",
+							"});",
+							"",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"var jsonObject = xml2Json(responseBody);",
+							"console.log(jsonObject);",
+							"",
+							"pm.test(\"Check Asset 2\", function () {",
+							"    //console.log(jsonObject.assets.asset.$.application);",
+							"    //to.equal(\"production\")",
+							"    pm.expect(jsonObject.assets.asset[0].$.rowid).to.equal(\"AAADpeAAAAAAC3KAAc\");",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://cms-dev.kwikee.com/ws/rest/service/assets/all;censhare:asset.type=module.",
+					"protocol": "https",
+					"host": [
+						"cms-dev",
+						"kwikee",
+						"com"
+					],
+					"path": [
+						"ws",
+						"rest",
+						"service",
+						"assets",
+						"all;censhare:asset.type=module."
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Asset by Name kwtwo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "78a7a976-29de-4c6e-8b98-7284afa8fa46",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"<asset\");",
+							"});",
+							"",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"var jsonObject = xml2Json(responseBody);",
+							"console.log(jsonObject);",
+							"",
+							"pm.test(\"Check Asset 2\", function () {",
+							"    //console.log(jsonObject.assets.asset.$.application);",
+							"    //to.equal(\"production\")",
+							"    pm.expect(jsonObject.assets.asset.$.rowid).to.equal(\"AAADpeAAAAAAXn+AAA\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://cms-dev.kwikee.com/ws/rest/service/assets/all;censhare:asset.name=kwtwo",
+					"protocol": "https",
+					"host": [
+						"cms-dev",
+						"kwikee",
+						"com"
+					],
+					"path": [
+						"ws",
+						"rest",
+						"service",
+						"assets",
+						"all;censhare:asset.name=kwtwo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Products",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "581ff59a-f7a1-455f-ac6d-eb9a49b2899d",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"results\");",
+							"});",
+							"",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://cms-dev.kwikee.com/ws/rest/service/kwikee-interface/v2.0/products/",
+					"protocol": "https",
+					"host": [
+						"cms-dev",
+						"kwikee",
+						"com"
+					],
+					"path": [
+						"ws",
+						"rest",
+						"service",
+						"kwikee-interface",
+						"v2.0",
+						"products",
+						""
 					]
 				}
 			},
